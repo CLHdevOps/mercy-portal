@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mercy House • Internal Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-slate-100 min-h-screen">
+  <header class="max-w-7xl mx-auto px-6 pt-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="images/mercy-house-logo.png" alt="Mercy House" class="w-10 h-10 object-contain"/>
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">Mercy House Internal</h1>
+        <p class="text-slate-600 text-sm -mt-1">Demo portal & assistant</p>
+      </div>
+    </div>
+    <nav class="flex items-center gap-3">
+      <a href="portal.html" class="rounded-xl bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">Go to Portal</a>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Welcome</h2>
+      <p class="text-slate-700 max-w-3xl">
+        This private demo showcases a two-page internal site with a lightweight AI assistant for internal documents
+        and a secure portal for HR and company information. Replace the demo password with SSO/server-side auth for production.
+      </p>
+    </section>
+
+    <section class="grid grid-cols-1 gap-6">
+      <div class="video-hero">
+        <span class="badge">Mercy House</span>
+        <video controls playsinline>
+          <source src="videos/rehab-demo.mp4" type="video/mp4"/>
+        </video>
+        <div class="overlay">
+          <div class="copy">
+            <h3>Families stay together here.</h3>
+            <p>Mercy House welcomes mothers with children—restoring stability while providing comprehensive, Christ-centered recovery.</p>
+            <a class="cta" href="portal.html">Explore the portal →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <div class="rounded-2xl bg-white p-6 shadow-sm">
+        <h3 class="text-lg font-semibold mb-2">What’s included</h3>
+        <ul class="list-disc pl-5 text-slate-700 space-y-1">
+          <li>Password-gated access (client-side demo)</li>
+          <li>AI Assistant UI with document search (client-side)</li>
+          <li>Portal links to HR / company documents</li>
+          <li>Embedded homepage video</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script> MH.requireAuth(); </script>
+</body>
+</html>

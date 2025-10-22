@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mercy House • Internal Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-slate-100 min-h-screen">
+  <header class="max-w-7xl mx-auto px-6 pt-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="images/mercy-house-logo.png" alt="Mercy House" class="w-10 h-10 object-contain"/>
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">Mercy House Portal</h1>
+        <p class="text-slate-600 text-sm -mt-1">HR & company resources + assistant</p>
+      </div>
+    </div>
+    <nav class="flex items-center gap-3">
+      <a href="index.html" class="rounded-xl bg-white border px-4 py-2 hover:bg-slate-50">Home</a>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-10 grid lg:grid-cols-3 gap-6">
+    <!-- Assistant -->
+    <section class="lg:col-span-2">
+      <div class="rounded-2xl bg-white p-6 shadow-sm mb-6">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-lg font-semibold">Agent Assistant</h2>
+          <span class="text-xs text-slate-500">Demo: keyword retrieval over internal docs</span>
+        </div>
+        <div class="flex gap-2">
+          <input id="assistant-input" placeholder="Ask about SEO priorities, pricing, thrift store strategy…" class="flex-1 border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+          <button id="assistant-send" class="rounded-xl bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">Ask</button>
+        </div>
+        <div id="assistant-results" class="space-y-4 mt-4"></div>
+      </div>
+
+      <!-- AI Content Generation Services -->
+      <div class="rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-8 shadow-lg text-white">
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h2 class="text-2xl font-bold mb-3">AI-Powered Content Creation</h2>
+            <p class="text-blue-50 mb-4 leading-relaxed">
+              Transform your marketing with custom AI-generated images and videos designed specifically for your mission.
+              We create stunning visual content for:
+            </p>
+            <ul class="space-y-2 mb-5">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>Website Hero Images & Banners</strong> - Eye-catching visuals that tell your story</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>Commercial & Promotional Videos</strong> - Professional-quality content without the film crew</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>Social Media Campaigns</strong> - Facebook, Instagram, and LinkedIn content that drives engagement</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>Email Marketing Graphics</strong> - Custom visuals for donor campaigns and newsletters</span>
+              </li>
+            </ul>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <p class="text-sm text-blue-50">
+                <strong class="text-white">Why AI?</strong> Faster turnaround, unlimited revisions, and significantly lower costs than traditional production—all while maintaining brand consistency and professional quality.
+              </p>
+            </div>
+          </div>
+          <div class="order-first md:order-last">
+            <img src="images/mercy-donate-car.png" alt="AI-Generated Marketing Content Example" class="rounded-xl shadow-2xl w-full"/>
+            <p class="text-xs text-blue-100 mt-2 text-center italic">Example: AI-generated vehicle donation campaign imagery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HR/Docs -->
+    <aside class="lg:col-span-1">
+      <div class="rounded-2xl bg-white p-6 shadow-sm mb-6">
+        <h3 class="font-semibold mb-2">HR • New Hire</h3>
+        <ul class="space-y-2 text-blue-700">
+          <li><a class="underline" href="docs/Vertical_AI_Services_and_Pricing.pdf" target="_blank">Employee Handbook (example)</a></li>
+          <li><a class="underline" href="docs/MercyHouse_SEO_Pricing_Proposal_Final.pdf" target="_blank">Benefits Overview (example)</a></li>
+          <li><a class="underline" href="docs/MercyHouse_SEO_Pricing_Proposal_Branded_Final.pdf" target="_blank">Onboarding Checklist (example)</a></li>
+        </ul>
+        <p class="text-xs text-slate-500 mt-3">Replace these with your actual HR PDFs for your demo.</p>
+      </div>
+
+      <div class="rounded-2xl bg-white p-6 shadow-sm">
+        <h3 class="font-semibold mb-2">Company Docs</h3>
+        <ul class="space-y-2 text-blue-700">
+          <li><a class="underline" href="docs/MercyHouse_Thrift_Store_SEO_Report.docx" target="_blank">Thrift Store & Local SEO Report (DOCX)</a></li>
+          <li><a class="underline" href="docs/Vertical_AI_Services_and_Pricing.pdf" target="_blank">Vertical AI Services & Pricing (PDF)</a></li>
+          <li><a class="underline" href="docs/MercyHouse_SEO_Pricing_Proposal_Final.pdf" target="_blank">SEO Pricing Proposal (Final PDF)</a></li>
+          <li><a class="underline" href="docs/MercyHouse_SEO_Pricing_Proposal_Branded_Final.pdf" target="_blank">SEO Pricing Proposal (Branded PDF)</a></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-6 pb-10 text-slate-500 text-sm">
+    Need secured streaming or a live LLM backend? Hook the UI to your <code>mercy-ai-agent.py</code>, <code>rehab-video-key-auth.py</code>, or <code>sacred-grove-video-key-auth.py</code> services.
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script>
+    MH.requireAuth();
+    document.getElementById("assistant-send").addEventListener("click", () => {
+      const q = document.getElementById("assistant-input").value;
+      if (q.trim().length === 0) return;
+      MH.askAssistant(q);
+    });
+    document.getElementById("assistant-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") document.getElementById("assistant-send").click();
+    });
+  </script>
+</body>
+</html>
