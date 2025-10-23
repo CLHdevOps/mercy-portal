@@ -33,8 +33,8 @@
     <section class="grid grid-cols-1 gap-6">
       <div class="video-hero">
         <span class="badge">Mercy House</span>
-        <video controls playsinline>
-          <source src="videos/rehab-demo.mp4" type="video/mp4"/>
+        <video controls playsinline preload="auto" style="object-fit: cover;">
+          <source src="videos/combined-hero.mp4" type="video/mp4"/>
         </video>
         <div class="overlay">
           <div class="copy">
@@ -47,13 +47,98 @@
     </section>
 
     <section class="mt-10">
+      <div class="rounded-2xl bg-gradient-to-br from-purple-50 to-blue-50 p-8 shadow-sm border border-purple-100">
+        <h3 class="text-2xl font-semibold mb-3 text-purple-900">AI Voice Agent Demos</h3>
+        <p class="text-slate-700 mb-6">Listen to our speech-to-speech AI assistant handling real customer support scenarios. These demos showcase AI-powered live agent capabilities for Mercy House.</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-xl bg-white p-5 shadow-sm">
+            <h4 class="font-semibold text-lg mb-2 text-slate-800">Caller in Crisis</h4>
+            <p class="text-sm text-slate-600 mb-3">AI assistant responding to a caller struggling with addiction seeking help.</p>
+            <audio controls preload="metadata" class="w-full">
+              <source src="audio/mercy-house-addicted-caller.m4a" type="audio/mp4">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="rounded-xl bg-white p-5 shadow-sm">
+            <h4 class="font-semibold text-lg mb-2 text-slate-800">Employee Inquiry</h4>
+            <p class="text-sm text-slate-600 mb-3">AI assistant handling an internal employee query with natural conversation.</p>
+            <audio controls preload="metadata" class="w-full">
+              <source src="audio/mercy-house-ai-caller-employee.m4a" type="audio/mp4">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <div class="rounded-2xl bg-white p-8 shadow-sm">
+        <h3 class="text-2xl font-semibold mb-3">Additional Video Content</h3>
+        <p class="text-slate-700 mb-6">Browse more video content about Mercy House programs and facilities.</p>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-slate-100 rounded-lg mb-3 flex items-center justify-center">
+              <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+              </svg>
+            </div>
+            <h4 class="font-semibold text-lg mb-2">Rehab Program</h4>
+            <p class="text-sm text-slate-600 mb-3">Overview of our rehabilitation services and family support.</p>
+            <a href="videos/rehab-demo.mp4" target="_blank" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <span>Open Video</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-slate-100 rounded-lg mb-3 flex items-center justify-center">
+              <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+              </svg>
+            </div>
+            <h4 class="font-semibold text-lg mb-2">Other Facilities</h4>
+            <p class="text-sm text-slate-600 mb-3">Tour of additional Mercy House locations and services.</p>
+            <a href="videos/other-facilities.mp4" target="_blank" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <span>Open Video</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-slate-100 rounded-lg mb-3 flex items-center justify-center">
+              <svg class="w-12 h-12 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+              </svg>
+            </div>
+            <h4 class="font-semibold text-lg mb-2">Sora Demo</h4>
+            <p class="text-sm text-slate-600 mb-3">AI-generated video demonstration of our mission.</p>
+            <a href="videos/sora-demo.mp4" target="_blank" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <span>Open Video</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10">
       <div class="rounded-2xl bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold mb-2">What’s included</h3>
+        <h3 class="text-lg font-semibold mb-2">What's included</h3>
         <ul class="list-disc pl-5 text-slate-700 space-y-1">
           <li>Password-gated access (client-side demo)</li>
           <li>AI Assistant UI with document search (client-side)</li>
           <li>Portal links to HR / company documents</li>
           <li>Embedded homepage video</li>
+          <li>AI Voice Agent demos (speech-to-speech)</li>
         </ul>
       </div>
     </section>

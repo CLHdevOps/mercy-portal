@@ -26,28 +26,46 @@
     ]
   },
   {
-    "title": "Mercy House SEO Pricing Proposal (Final)",
-    "file": "MercyHouse_SEO_Pricing_Proposal_Final.pdf",
-    "summary": "Final SEO pricing proposal including deliverables and KPIs.",
+    "title": "AI Implementation Roadmap",
+    "file": "AI_Implementation_Roadmap.pdf",
+    "summary": "Strategic roadmap for implementing AI technologies across Mercy House operations, including timelines, milestones, and resource requirements.",
     "keywords": [
-      "SEO",
-      "pricing",
-      "KPIs",
-      "deliverables",
-      "proposal"
+      "AI",
+      "implementation",
+      "roadmap",
+      "strategy",
+      "technology",
+      "automation",
+      "digital transformation"
     ]
   },
   {
-    "title": "Thrift Store & Local SEO Report",
-    "file": "MercyHouse_Thrift_Store_SEO_Report.docx",
-    "summary": "Action plan for thrift store & local SEO: create location pages, optimize Google Business Profiles, add 'near me' content, and donation guidelines.",
+    "title": "HR Policy",
+    "file": "HR_Policy.pdf",
+    "summary": "Comprehensive HR policies covering employee guidelines, benefits, conduct, and workplace procedures.",
     "keywords": [
-      "thrift store",
-      "local SEO",
-      "Google Business Profile",
-      "location pages",
-      "donate items",
-      "near me"
+      "HR",
+      "human resources",
+      "policy",
+      "employee",
+      "benefits",
+      "conduct",
+      "workplace",
+      "procedures"
+    ]
+  },
+  {
+    "title": "Sales Quote",
+    "file": "Sales Quote.pdf",
+    "summary": "Sales quotation document with pricing, terms, and service details.",
+    "keywords": [
+      "sales",
+      "quote",
+      "quotation",
+      "pricing",
+      "terms",
+      "services",
+      "proposal"
     ]
   }
 ]

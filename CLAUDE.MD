@@ -28,15 +28,29 @@ Open `index.html` directly in a browser (file:// protocol works for this demo).
 - For production: Replace with SSO or server-side authentication
 
 ### Agent Assistant
-- **Client-side keyword retrieval** over document index
+- **Dual-mode support**: Client-side keyword search OR live Azure AI agent
+- Toggle mode via `USE_LIVE_AGENT` flag in `assets/app.js:35`
+  - `false` (default): Client-side keyword retrieval over `docs/index.json`
+  - `true`: Live queries to Azure AI agent via Flask API
+
+#### Client-Side Mode (Default)
 - Document index: `docs/index.json` (JSON array with title, file, summary, keywords)
-- Search algorithm in `assets/app.js:36-101`:
+- Search algorithm in `assets/app.js:73-101`:
   - Naive keyword scoring: counts term matches in title/summary/keywords
   - Returns top 3 results sorted by score
-  - Includes templated responses for specific topics (thrift store, pricing/SEO)
-- For production backend:
-  - Replace client search with `fetch("/api/ask", { method: "POST", body: JSON.stringify({ prompt }) })`
-  - Point to backend service like `mercy-ai-agent.py` (mentioned in README but not included in repo)
+  - Includes templated responses for specific topics (AI implementation, HR policy, pricing)
+
+#### Live Agent Mode
+- **Backend**: Flask API in `mercy-ai-agent.py` (runs on port 5000)
+- **Azure Endpoint**: `https://devopsaifoundry.services.ai.azure.com/api/projects/devopsaifoundry-project`
+- **Agent ID**: `asst_BWQLf9pcF6RX83wc2vVNXImu`
+- **API Route**: `POST /api/ask` with JSON body `{ "prompt": "user question" }`
+- Returns: `{ "answer": "agent response", "sources": [...] }`
+
+**To enable live agent:**
+1. Set `USE_LIVE_AGENT = true` in `assets/app.js:35`
+2. Start Flask backend: `python mercy-ai-agent.py` (requires Azure credentials)
+3. Ensure CORS is configured for your frontend domain
 
 ### Document Management
 - PDFs/DOCX stored in `docs/` directory

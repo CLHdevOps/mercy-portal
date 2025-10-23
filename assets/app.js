@@ -31,40 +31,90 @@ function requireAuth() {
   }
 }
 
+// Configuration: Set to true to use live Azure AI agent, false for client-side search
+const USE_LIVE_AGENT = true;
+const AGENT_API_URL = "http://localhost:5000/api/ask";
+
 async function askAssistant(prompt) {
   const resBox = document.querySelector("#assistant-results");
   const thinking = document.createElement("div");
   thinking.className = "text-sm text-slate-500";
   thinking.textContent = "Thinking…";
   resBox.prepend(thinking);
+
   try {
-    const docs = await (await fetch("docs/index.json")).json();
-    const q = (prompt || "").toLowerCase();
-    const scored = docs.map(d => {
-      const hay = (d.title + " " + d.summary + " " + (d.keywords||[]).join(" ")).toLowerCase();
-      const score = q.split(/\s+/).reduce((acc, term) => acc + (hay.includes(term) ? 1 : 0), 0);
-      return {...d, score};
-    }).sort((a,b)=>b.score-a.score);
-    thinking.remove();
-    const hits = scored.filter(d=>d.score>0).slice(0,3);
-    const card = document.createElement("div");
-    card.className = "rounded-xl border bg-white p-4 shadow-sm";
-    if (hits.length === 0) {
-      card.innerHTML = `<div class="text-slate-800 font-medium mb-1">No direct matches found.</div>
-        <p class="text-slate-600 text-sm">Try asking about: <em>thrift store near me</em>, <em>SEO pricing</em>, or <em>Google Business Profile</em>.</p>`;
+    if (USE_LIVE_AGENT) {
+      // Live Azure AI agent mode
+      const response = await fetch(AGENT_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Agent API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      thinking.remove();
+
+      // Format the response text with proper line breaks and structure
+      const formattedAnswer = (data.answer || "No response from agent.")
+        .replace(/\n\n/g, '</p><p class="text-slate-700 text-base leading-relaxed mb-3">')
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/^(\d+\.)\s/gm, '<br><strong>$1</strong> ')
+        .replace(/^([-•])\s/gm, '<br>$1 ');
+
+      const card = document.createElement("div");
+      card.className = "rounded-xl border bg-white p-5 shadow-sm";
+      card.innerHTML = `<div class="text-slate-900 font-semibold text-lg mb-3 pb-2 border-b border-slate-200">Agent Response</div>
+        <div class="prose prose-slate max-w-none">
+          <p class="text-slate-700 text-base leading-relaxed mb-3">${formattedAnswer}</p>
+        </div>
+        ${data.sources && data.sources.length > 0 ? `
+          <div class="mt-4 pt-4 border-t border-slate-200">
+            <div class="text-slate-900 font-semibold mb-2">Sources</div>
+            <ul class="space-y-3">
+              ${data.sources.map(s => `<li class="text-sm">
+                <a href="docs/${s.file}" class="text-blue-600 hover:text-blue-700 underline font-medium" target="_blank" rel="noopener">${s.title}</a>
+                <div class="text-slate-600 mt-1">${s.summary}</div>
+              </li>`).join("")}
+            </ul>
+          </div>` : ''}`;
+      resBox.prepend(card);
     } else {
-      let answer = "I found the most relevant internal documents below. Open them to verify details.";
-      if (q.includes("thrift") || q.includes("near me")) answer = "Top priority: launch Thrift Store & Local SEO with location pages and optimized Google Business Profiles.";
-      if (q.includes("pricing") || q.includes("seo")) answer = "See the SEO Pricing proposals for scope, timelines, and KPIs.";
-      card.innerHTML = `<div class="text-slate-800 font-medium mb-1">Draft answer</div>
-        <p class="text-slate-700 text-sm mb-3">${answer}</p>
-        <div class="text-slate-800 font-medium mb-1">Sources</div>
-        <ul class="space-y-2">
-          ${hits.map(h => `<li class="text-sm"><a href="docs/${h.file}" class="text-blue-600 underline" target="_blank" rel="noopener">${h.title}</a>
-          <div class="text-slate-600">${h.summary}</div></li>`).join("")}
-        </ul>`;
+      // Client-side document search mode (original behavior)
+      const docs = await (await fetch("docs/index.json")).json();
+      const q = (prompt || "").toLowerCase();
+      const scored = docs.map(d => {
+        const hay = (d.title + " " + d.summary + " " + (d.keywords||[]).join(" ")).toLowerCase();
+        const score = q.split(/\s+/).reduce((acc, term) => acc + (hay.includes(term) ? 1 : 0), 0);
+        return {...d, score};
+      }).sort((a,b)=>b.score-a.score);
+      thinking.remove();
+      const hits = scored.filter(d=>d.score>0).slice(0,3);
+      const card = document.createElement("div");
+      card.className = "rounded-xl border bg-white p-4 shadow-sm";
+      if (hits.length === 0) {
+        card.innerHTML = `<div class="text-slate-800 font-medium mb-1">No direct matches found.</div>
+          <p class="text-slate-600 text-sm">Try asking about: <em>AI implementation</em>, <em>HR policy</em>, or <em>vertical AI services</em>.</p>`;
+      } else {
+        let answer = "I found the most relevant internal documents below. Open them to verify details.";
+        if (q.includes("ai") || q.includes("implementation")) answer = "Check the AI Implementation Roadmap for strategic planning and timelines.";
+        if (q.includes("hr") || q.includes("policy") || q.includes("employee")) answer = "Review the HR Policy document for comprehensive employee guidelines and procedures.";
+        if (q.includes("pricing") || q.includes("services")) answer = "See the Vertical AI Services & Pricing document for service tiers and proposals.";
+        card.innerHTML = `<div class="text-slate-800 font-medium mb-1">Draft answer</div>
+          <p class="text-slate-700 text-sm mb-3">${answer}</p>
+          <div class="text-slate-800 font-medium mb-1">Sources</div>
+          <ul class="space-y-2">
+            ${hits.map(h => `<li class="text-sm"><a href="docs/${h.file}" class="text-blue-600 underline" target="_blank" rel="noopener">${h.title}</a>
+            <div class="text-slate-600">${h.summary}</div></li>`).join("")}
+          </ul>`;
+      }
+      resBox.prepend(card);
     }
-    resBox.prepend(card);
   } catch (err) {
     thinking.remove();
     const errBox = document.createElement("div");

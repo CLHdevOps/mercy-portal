@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(ffprobe:*)",
+      "Bash(Get-Item \"C:\\Users\\ogDevOps\\sources\\mercy-portal\\videos\\rehab-demo.mp4\")",
+      "Bash(Select-Object Name, Length, LastWriteTime)",
+      "Bash(Format-List)",
+      "Bash(where:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
